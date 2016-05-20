@@ -122,9 +122,17 @@ int main(int argc, char *argv[])
     }
     return 0;
 */
-    char *leftDirectoryName = "./left/";
-    char *rightDirectoryName = "./right/";
+
+    string searchDirectoryName ;
+    cout << "Enter the directory name:";
+    cin >> searchDirectoryName ;
+    string leftDirectory = searchDirectoryName +"left/" ;
+    string rightDirectory = searchDirectoryName +"left/" ;
+
+    const char *leftDirectoryName = leftDirectory.c_str();
+    const char *rightDirectoryName = rightDirectory.c_str();
     char *searchType = ".png";
+    getchar();
     DIR *leftDir,*rightDir;
     vector<String> leftFileNames,rightFileNames;
     struct dirent *leftEnt,*rightEnt;
@@ -141,6 +149,7 @@ int main(int argc, char *argv[])
       closedir (rightDir);
     }else {
       perror ("");
+      cout << "dir : " << leftDirectoryName << endl;
       return -1;
     }
     sort(leftFileNames.begin(),leftFileNames.end(),compareNat);
